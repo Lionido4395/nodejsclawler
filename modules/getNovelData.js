@@ -1,6 +1,9 @@
 ;(function(){
     var cheerio = require('cheerio')
     var gs = require('nodegrass')
+    
+    var mongoose = require('mongoose')
+    mongoose.connect('mongodb://localhost/crawlerNovel')
 
     var url = 'http://www.biquku.com/0/330/'
 
@@ -26,19 +29,37 @@
         return chapterData
     }
 
-    var getContent = function (id){
+    var getContent = function (){
         var chapterData = getList()
-        var content = ""
-        var subUrl = url + id + '.html'
-        gs.get(subUrl,function(data){
-            var html= data
-            var $ = cheerio.load(html)
-            content = $('#content').text()
-            
-        },'gbk').on('error',function(err){
-            console.log(err)
-        })
-        return content
+
+        for (var i = 0; i < chapterData.length; i++) {
+            var subUrl = url + chapterData.id + '.html'
+            gs.get(subUrl,function(data){
+                var html= data
+                var $ = cheerio.load(html)
+                var title = chapterData.title
+                var content = $('#content').text()
+
+                var Novel = mongoose.model('Novel', {
+                    title: String,
+                    content: String
+                })
+
+                var Chapter = new Novel({
+                    title: title, 
+                    content: content
+                })
+
+                Chapter.save(function(err){
+                    if(err){
+                        console.log('保存失败')
+                    }
+                    console.log("保存完成")
+                })
+            },'gbk').on('error',function(err){
+                console.log(err)
+            })
+        }
     }
     module.exports = {
         getList: getList,
