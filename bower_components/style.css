@@ -1,0 +1,23 @@
+body{
+    font-family: 'microsoft yahei', "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+#header{
+    height: 100px;
+}
+#header img{
+    margin-top: 30px;
+}
+.title{
+    padding-bottom: 20px;
+}
+.list-group-item{
+    margin-right: -1px;
+}
+.item{
+    display: block;
+}
+#content p{
+    line-height: 30px;
+    font-size: 18px;
+    text-indent: 2rem;
+}

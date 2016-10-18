@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>满集小说</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div id="header" class="container">
+        <img src="http://manjiwang.com/images/logo1.png" class="img-responsive" alt="Image">
+    </div>
+    <div class="container">
+        <h2 class="title">满集小说</h2>
+        <div class="list list-group">
+            <% listData.forEach(function(item){ %>
+            <div class="col-sm-3 list-group-item">
+                <a class="text-left item" href="novel<%= item.href%>"><%= item.title%></a>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>

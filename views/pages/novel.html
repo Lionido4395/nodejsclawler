@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script type="text/javascript" src="/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <div id="header" class="container">
+        <img src="http://manjiwang.com/images/logo1.png" class="img-responsive" alt="Image">
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center"><%= title%></h3>
+            </div>
+            <div class="panel-body">
+                <p class="col-sm-6"><%= info.author%></p>
+                <p class="col-sm-6"><%= info.newUpdate%></p>
+                <p><%= info.desc%></p>
+            </div>
+        </div>
+        <div class="list list-group">
+            <% list.forEach(function(item){ %>
+            <div class="col-sm-3 list-group-item">
+                <a class="text-left item" href="<%= item.id%>"><%= item.title%></a>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>
